@@ -4,8 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
+
+// var name = ""
 
 class MainActivity : AppCompatActivity() {
+
+    var name = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -14,12 +20,12 @@ class MainActivity : AppCompatActivity() {
 
         // Void - Unit
 
-        mySum(10,20)
+        // mySum(10,20)
 
         // Return
 
         val result = myMultiply(10,20)
-        textView.text = "Result: ${result}"
+        // textView.text = "Result: ${result}"
 
         /*
         button.setOnClickListener() {
@@ -76,17 +82,42 @@ class MainActivity : AppCompatActivity() {
 
     // Input & Return
 
+    /*
     fun mySum(a: Int,b: Int) {
         textView.text = "Result: ${a + b}"
     }
+     */
 
     fun myMultiply(x:Int,y:Int) : Int {
         return x * y
     }
 
-    fun helloKotlin(view : View) {
-        textView.text = "Hello Kotlin"
+    fun makeSimpson (view: View) {
+
+        name = nameText.text.toString()
+        var age = ageText.text.toString().toIntOrNull()
+        if (age == null) {
+            age = 0
+        }
+        val job = jobText.text.toString()
+
+        val simpson = Simpson(name,age,job)
+
+        resultText.text = "Name : ${simpson.name}, Age : ${simpson.age}, Job : ${simpson.job}"
+
     }
+
+    fun scopeExample(view: View) {
+
+        // Scope
+
+        println(name)
+
+    }
+
+
+
+
 
 
 
